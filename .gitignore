@@ -4,3 +4,4 @@ coverage/
 Figsfile
 # Ignore application configuration
 application.yml
+.ruby-version
