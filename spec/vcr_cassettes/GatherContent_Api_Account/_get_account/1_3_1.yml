@@ -12,7 +12,7 @@ http_interactions:
       Accept:
       - application/vnd.gathercontent.v0.5+json
       Authorization:
-      Basic YmEzNkBueXUuZWR1OjdjY2ZjNzllLTVjNWEtNGJhOC04ZDFhLTg0ZWVmNDY4MzU2Ng==
+      - Basic YmEzNkBueXUuZWR1OjdjY2ZjNzllLTVjNWEtNGJhOC04ZDFhLTg0ZWVmNDY4MzU2Ng==
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -29,12 +29,49 @@ http_interactions:
       Server:
       - nginx
       Content-Length:
-      - '83'
+      - '75'
       Connection:
       - keep-alive
     body:
       encoding: ASCII-8BIT
       string: '{"data":{"id":"123456","name":"Example","slug":"example","timezone":"UTC"}}'
-    http_version:
+    http_version: 
   recorded_at: Mon, 26 Feb 2018 04:08:03 GMT
+- request:
+    method: get
+    uri: https://api.gathercontent.com/accounts/29785
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.14.0
+      Accept:
+      - application/vnd.gathercontent.v0.5+json
+      Authorization:
+      - Basic bXlsZXNAcmFpc2Vib29rLmNvbTpmYmY5ODdiYy0xNjMyLTRjYmQtOTYxMS1kNTBiN2RjM2NkOGU=
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 26 Feb 2018 05:37:49 GMT
+      Server:
+      - nginx
+      Content-Length:
+      - '83'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"id":"29785","name":"Raisebook","slug":"raisebook","timezone":"UTC"}}'
+    http_version: 
+  recorded_at: Mon, 26 Feb 2018 05:37:49 GMT
 recorded_with: VCR 3.0.3
