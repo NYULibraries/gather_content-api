@@ -10,8 +10,8 @@ require 'gather_content'
 # require 'figs'
 # Figs.load()
 
-ENV['GATHER_CONTENT_API_KEY'] = 'api-key'
-ENV['GATHER_CONTENT_API_USERNAME'] = 'api-id'
+#ENV['GATHER_CONTENT_API_KEY'] = 'api-key'
+#ENV['GATHER_CONTENT_API_USERNAME'] = 'api-id'
 
 VCR.configure do |c|
   c.filter_sensitive_data('api-key') { ENV['GATHER_CONTENT_API_KEY'] }

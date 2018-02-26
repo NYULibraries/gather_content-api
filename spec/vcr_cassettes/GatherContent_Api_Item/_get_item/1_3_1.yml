@@ -12,7 +12,7 @@ http_interactions:
       Accept:
       - application/vnd.gathercontent.v0.5+json
       Authorization:
-      - Basic YmEzNkBueXUuZWR1OjdjY2ZjNzllLTVjNWEtNGJhOC04ZDFhLTg0ZWVmNDY4MzU2Ng==
+      Basic YmEzNkBueXUuZWR1OjdjY2ZjNzllLTVjNWEtNGJhOC04ZDFhLTg0ZWVmNDY4MzU2Ng==
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -269,6 +269,6 @@ http_interactions:
         22:00:00.000000","timezone_type":3,"timezone":"UTC"}},{"status_id":241860,"overdue":true,"due_date":{"date":"2015-10-08
         22:00:00.000000","timezone_type":3,"timezone":"UTC"}},{"status_id":241861,"overdue":true,"due_date":{"date":"2015-10-12
         22:00:00.000000","timezone_type":3,"timezone":"UTC"}}]}}}'
-    http_version: 
+    http_version:
   recorded_at: Fri, 17 Nov 2017 18:19:07 GMT
 recorded_with: VCR 3.0.3
