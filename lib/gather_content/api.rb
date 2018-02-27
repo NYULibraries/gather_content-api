@@ -5,6 +5,8 @@ module GatherContent
     autoload :Me, 'gather_content/api/me'
     autoload :Accounts, 'gather_content/api/accounts'
     autoload :Account, 'gather_content/api/account'
+    autoload :Projects, 'gather_content/api/projects'
+    autoload :Project, 'gather_content/api/project'
     autoload :Items, 'gather_content/api/items'
     autoload :Item, 'gather_content/api/item'
   end

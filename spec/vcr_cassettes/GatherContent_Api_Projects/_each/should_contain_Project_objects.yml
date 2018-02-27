@@ -1,0 +1,40 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gathercontent.com/projects?account_id=123456
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.14.0
+      Accept:
+      - application/vnd.gathercontent.v0.5+json
+      Authorization:
+      - Basic YW5kcmV3QGdhdGhlcmNvbnRlbnQuY29tOjJkMmE4YmY2LTA4YzAtNDllNi05NDYwLTI1MTM5ZmRiOGIyNA==
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 27 Feb 2018 05:10:58 GMT
+      Server:
+      - nginx
+      Content-Length:
+      - '631'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":[{"id":123456,"name":"Example Project","account_id":123456,"active":true,"text_direction":"ltr","overdue":false,"statuses":{"data":[{"id":"123456","is_default":true,"position":"1","color":"#C5C5C5","name":"Draft","description":"","can_edit":true},{"id":"123457","is_default":false,"position":"2","color":"#FAA732","name":"Review","description":"","can_edit":true},{"id":"123458","is_default":false,"position":"3","color":"#5EB95E","name":"Final edits","description":"","can_edit":true},{"id":"123459","is_default":false,"position":"4","color":"#DD4398","name":"Ready to be published","description":"","can_edit":false}]}}]}'
+    http_version:
+  recorded_at: Tue, 27 Feb 2018 05:10:58 GMT
+recorded_with: VCR 3.0.3

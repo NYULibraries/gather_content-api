@@ -72,6 +72,13 @@ describe GatherContent::Api::Config do
       end
     end
 
+    after(:each) do
+      GatherContent::Api::Config.run do |config|
+        config.username = nil
+        config.api_key = nil
+      end
+    end
+
     it "stores the username" do
       expect(subject.username).to eq(username)
     end
