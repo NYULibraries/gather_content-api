@@ -1,0 +1,40 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.gathercontent.com/items/123456
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.13.1
+      Accept:
+      - application/vnd.gathercontent.v0.5+json
+      Authorization:
+      - Basic YW5kcmV3QGdhdGhlcmNvbnRlbnQuY29tOjJkMmE4YmY2LTA4YzAtNDllNi05NDYwLTI1MTM5ZmRiOGIyNA==
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/json
+      Date:
+      - Fri, 17 Nov 2017 18:19:07 GMT
+      Server:
+      - nginx
+      Content-Length:
+      - '2373'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"id":123456,"project_id":123456,"parent_id":0,"template_id":null,"position":"11","name":"Home","config":[{"label":"Content","hidden":false,"elements":[{"type":"text","name":"el1429200091126","required":false,"label":"Page header","value":"<p>\n    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus leo tortor, vulputate eu leo vel, pharetra mattis sem. Nunc et nisl in ligula elementum rutrum a non mauris.\n</p>\n<p>\n    In venenatis, ante eget vestibulum maximus, eros sapien maximus ipsum, nec malesuada massa ante finibus diam. Sed rutrum diam sit amet ligula tempor, non vulputate mauris facilisis. Sed varius lectus mauris, sit amet pulvinar justo condimentum ut. In blandit ipsum lorem, quis tincidunt erat sodales ut.\n</p>\n<p>\n    Nunc congue tellus magna, eget hendrerit enim malesuada a. Proin diam lacus, suscipit ut nisl sed, suscipit vulputate ante. Suspendisse sit amet ex sollicitudin, iaculis urna eu, auctor ligula. Fusce consectetur, leo eu tempus fermentum, metus risus fringilla augue, et maximus arcu quam sit amet odio. Nam at commodo ex\n</p>","microcopy":"","limit_type":"words","limit":"0","plain_text":false},{"type":"choice_radio","name":"Multiple-choice","required":false,"label":"Multiple choice","microcopy":"","other_option":true,"options":[{"label":"Second Choice","selected":false,"name":"Multiple-choice-op1"},{"label":"Third Choice","selected":true,"name":"Multiple-choice-op2"},{"label":"Red","selected":false,"name":"Multiple-choice-op3"},{"label":"Blue","selected":false,"name":"Multiple-choice-op4"},{"label":"Other","selected":false,"value":"","name":"Multiple-choice-op5"}]},{"type":"files","name":"File-attachment","required":false,"label":"File attachment","microcopy":""}],"name":"tab1"}],"notes":"","type":"item","overdue":true,"updated_at":{"date":"2015-08-26 15:16:02.000000","timezone_type":3,"timezone":"UTC"},"created_at":{"date":"2015-08-26 15:16:02.000000","timezone_type":3,"timezone":"UTC"},"status":{"data":{"id":"123456","is_default":true,"position":"1","color":"#C5C5C5","name":"Draft","description":"","can_edit":true}},"due_dates":{"data":[{"status_id":123456,"overdue":true,"due_date":{"date":"2015-07-02 12:00:00.000000","timezone_type":3,"timezone":"UTC"}},{"status_id":123457,"overdue":true,"due_date":{"date":"2015-07-03 16:00:00.000000","timezone_type":3,"timezone":"UTC"}}]}}}'
+    http_version:
+  recorded_at: Fri, 17 Nov 2017 18:19:07 GMT
+recorded_with: VCR 3.0.3
