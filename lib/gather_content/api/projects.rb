@@ -9,22 +9,10 @@ module GatherContent
         @account_id = account_id
       end
 
-      def to_a(projects = [])
-        JSON.parse(get.body)['data'].each do |project|
-          new_project = project_class.new(project['id'])
-          projects << new_project
-        end
-        return projects
-      end
-
       def each(&block)
-        self.to_a.each(&block)
-      end
-
-    protected
-
-      def project_class
-        @project_class ||= Kernel.const_get("GatherContent::Api::Project")
+        fetch.each do |project|
+          yield GatherContent::Api::Project.new(project['id'], project)
+        end
       end
 
     private

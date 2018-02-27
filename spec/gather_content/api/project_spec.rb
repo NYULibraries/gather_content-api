@@ -10,13 +10,23 @@ describe GatherContent::Api::Project, vcr: true do
     it { is_expected.to be_a GatherContent::Api::Project }
   end
 
-  describe '#project_id' do
+  describe '#get' do
     subject { project.project_id }
     it { is_expected.to eql project_id }
   end
 
-  describe '#get_project' do
-    subject { project.get_project }
+  describe '#fetch' do
+    subject { project.fetch }
     it { is_expected.to be_a Hash }
+  end
+
+  describe "[]" do
+    subject { project }
+
+    it "returns the data related to the supplied key" do
+      expect(subject["id"]).to eq(123456)
+      expect(subject["name"]).to eq("Example Project")
+      expect(subject["account_id"]).to eq(123456)
+    end
   end
 end

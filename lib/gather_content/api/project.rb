@@ -10,7 +10,6 @@ module GatherContent
       end
 
       def [](key)
-        puts fetch.inspect
         fetch[key]
       end
 
