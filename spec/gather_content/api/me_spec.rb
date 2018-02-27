@@ -9,8 +9,18 @@ describe GatherContent::Api::Me, vcr: true do
     it { is_expected.to be_a GatherContent::Api::Me }
   end
 
-  describe '#get_me' do
-    subject { me.get_me }
+  describe '#fetch' do
+    subject { me.fetch }
     it { is_expected.to be_a Hash }
+  end
+
+  describe "[]" do
+    subject { me }
+
+    it "returns the data related to the supplied key" do
+      expect(subject["email"]).to eq("andrew@gathercontent.com")
+      expect(subject["first_name"]).to eq("Andrew")
+      expect(subject["last_name"]).to eq("Cairns")
+    end
   end
 end

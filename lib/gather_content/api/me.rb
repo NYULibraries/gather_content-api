@@ -3,8 +3,8 @@ module GatherContent
     class Me < Base
       def initialize; end
 
-      def get_me
-        @get_me ||= JSON.parse(get.body)
+      def [](key)
+        fetch[key]
       end
 
     private
