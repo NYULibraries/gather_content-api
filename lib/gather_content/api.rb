@@ -1,5 +1,6 @@
 module GatherContent
   module Api
+    autoload :Config, 'gather_content/api/config'
     autoload :Base, 'gather_content/api/base'
     autoload :Me, 'gather_content/api/me'
     autoload :Accounts, 'gather_content/api/accounts'

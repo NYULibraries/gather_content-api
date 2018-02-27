@@ -35,9 +35,11 @@ module GatherContent
       end
 
       def connection
+        config = GatherContent::Api::Config.instance
+
         @connection ||= Faraday.new(url: "#{gather_content_api_host}:#{gather_content_api_port}") do |faraday|
           faraday.request  :url_encoded
-          faraday.request  :basic_auth, ENV['GATHER_CONTENT_API_USERNAME'], ENV['GATHER_CONTENT_API_KEY']
+          faraday.request  :basic_auth, config.username, config.api_key
           # faraday.response :logger
           faraday.adapter  Faraday.default_adapter
         end
