@@ -5,22 +5,10 @@ module GatherContent
 
       def initialize; end
 
-      def to_a(accounts = [])
-        JSON.parse(get.body)['data'].each do |account|
-          new_account = account_class.new(account['id'])
-          accounts << new_account
-        end
-        return accounts
-      end
-
       def each(&block)
-        self.to_a.each(&block)
-      end
-
-    protected
-
-      def account_class
-        @account_class ||= Kernel.const_get("GatherContent::Api::Account")
+        fetch.each do |account|
+          yield GatherContent::Api::Account.new(account['id'], account)
+        end
       end
 
     private
@@ -30,7 +18,6 @@ module GatherContent
       def path
         @path ||= '/accounts'
       end
-
     end
   end
 end

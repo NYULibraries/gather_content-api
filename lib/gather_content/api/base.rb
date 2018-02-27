@@ -14,7 +14,19 @@ module GatherContent
         end
       end
 
+      def fetch
+        @data ||= parse(get.body)
+      end
+
+      def reset
+        @data = nil
+      end
+
     protected
+      def parse(data)
+        parsed = JSON.parse(data)
+        parsed['data']
+      end
 
       def params
         raise RuntimeError, "Expected this to be implemented in a subclass!"

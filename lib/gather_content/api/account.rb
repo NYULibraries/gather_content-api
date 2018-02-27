@@ -3,13 +3,14 @@ module GatherContent
     class Account < Base
       attr_accessor :account_id
 
-      def initialize(account_id)
+      def initialize(account_id, data = nil)
         raise ArgumentError, "account_id is required!" if account_id.nil?
         @account_id = account_id
+        @data = data
       end
 
-      def get_account
-        @get_account ||= JSON.parse(get.body)
+      def [](key)
+        fetch[key]
       end
 
     private
