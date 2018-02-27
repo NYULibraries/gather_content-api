@@ -25,19 +25,10 @@ module GatherContent
       end
 
     private
-
-      def gather_content_api_host
-        ENV['gather_content_api_host'] || 'https://api.gathercontent.com'
-      end
-
-      def gather_content_api_port
-        ENV['gather_content_api_port'] || '443'
-      end
-
       def connection
         config = GatherContent::Api::Config.instance
 
-        @connection ||= Faraday.new(url: "#{gather_content_api_host}:#{gather_content_api_port}") do |faraday|
+        @connection ||= Faraday.new(url: "#{config.host}:#{config.port}") do |faraday|
           faraday.request  :url_encoded
           faraday.request  :basic_auth, config.username, config.api_key
           # faraday.response :logger
