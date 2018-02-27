@@ -9,7 +9,7 @@ module GatherContent
     autoload :Project, 'gather_content/api/project'
     autoload :Items, 'gather_content/api/items'
     autoload :Item, 'gather_content/api/item'
-    autoload :Statuses, 'gather_content/api/projects/statuses'
-    autoload :Status, 'gather_content/api/projects/status'
+    autoload :Statuses, 'gather_content/api/statuses'
+    autoload :Status, 'gather_content/api/status'
   end
 end
