@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe GatherContent::Api::Project, vcr: true do
-  let(:project_id) { 155116 }
+  let(:project_id) { 123456 }
   let(:project) { GatherContent::Api::Project.new(project_id) }
 
   describe '.new' do

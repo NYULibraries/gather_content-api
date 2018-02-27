@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe GatherContent::Api::Account, vcr: true do
-  let(:account_id) { 29785 }
+  let(:account_id) { 123456 }
   let(:account) { GatherContent::Api::Account.new(account_id) }
 
   describe '.new' do
