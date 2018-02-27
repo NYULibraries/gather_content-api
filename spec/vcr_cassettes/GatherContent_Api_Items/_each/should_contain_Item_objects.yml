@@ -34,7 +34,48 @@ http_interactions:
       - keep-alive
     body:
       encoding: ASCII-8BIT
-      string: '{"data":[{"id":123456,"project_id":123456,"parent_id":0,"template_id":null,"position":"11","name":"Home","notes":"","type":"item","overdue":true,"created_at":{"date":"2015-07-31 10:58:12.000000","timezone_type":3,"timezone":"UTC"},"updated_at":{"date":"2015-07-31 10:58:12.000000","timezone_type":3,"timezone":"UTC"},"status":{"data":{"id":"123456","is_default":true,"position":"1","color":"#C5C5C5","name":"Draft","description":"","can_edit":true}},"due_dates":{"data":[{"status_id":123456,"overdue":true,"due_date":{"date":"2015-07-02 12:00:00.000000","timezone_type":3,"timezone":"UTC"}},{"status_id":123457,"overdue":true,"due_date":{"date":"2015-07-03 16:00:00.000000","timezone_type":3,"timezone":"UTC"}}]}}]}'
-    http_version:
+      string: '{"data":[{"id":123456,"project_id":123456,"parent_id":0,"template_id":null,"position":"11","name":"Home","notes":"","type":"item","overdue":true,"created_at":{"date":"2015-07-31
+        10:58:12.000000","timezone_type":3,"timezone":"UTC"},"updated_at":{"date":"2015-07-31
+        10:58:12.000000","timezone_type":3,"timezone":"UTC"},"status":{"data":{"id":"123456","is_default":true,"position":"1","color":"#C5C5C5","name":"Draft","description":"","can_edit":true}},"due_dates":{"data":[{"status_id":123456,"overdue":true,"due_date":{"date":"2015-07-02
+        12:00:00.000000","timezone_type":3,"timezone":"UTC"}},{"status_id":123457,"overdue":true,"due_date":{"date":"2015-07-03
+        16:00:00.000000","timezone_type":3,"timezone":"UTC"}}]}}]}'
+    http_version: 
   recorded_at: Fri, 17 Nov 2017 18:19:07 GMT
+- request:
+    method: get
+    uri: https://api.gathercontent.com/items?project_id=123456
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.14.0
+      Accept:
+      - application/vnd.gathercontent.v0.5+json
+      Authorization:
+      - Basic bXlsZXNAcmFpc2Vib29rLmNvbTpmYmY5ODdiYy0xNjMyLTRjYmQtOTYxMS1kNTBiN2RjM2NkOGU=
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/json
+      Date:
+      - Tue, 27 Feb 2018 05:51:34 GMT
+      Server:
+      - nginx
+      Content-Length:
+      - '60'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"message":"Project Not Found"}}'
+    http_version: 
+  recorded_at: Tue, 27 Feb 2018 05:51:34 GMT
 recorded_with: VCR 3.0.3

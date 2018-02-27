@@ -3,13 +3,14 @@ module GatherContent
     class Item < Base
       attr_accessor :item_id
 
-      def initialize(item_id)
+      def initialize(item_id, data = nil)
         raise ArgumentError, "Item_id is required!" if item_id.nil?
         @item_id = item_id
+        @data = data
       end
 
-      def get_item
-        @get_item ||= JSON.parse(get.body)
+      def [](key)
+        fetch[key]
       end
 
     private

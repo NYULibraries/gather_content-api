@@ -10,11 +10,6 @@ describe GatherContent::Api::Account, vcr: true do
     it { is_expected.to be_a GatherContent::Api::Account }
   end
 
-  describe '#get' do
-    subject { account.account_id }
-    it { is_expected.to eql account_id }
-  end
-
   describe '#fetch' do
     subject { account.fetch }
     it { is_expected.to be_a Hash }
