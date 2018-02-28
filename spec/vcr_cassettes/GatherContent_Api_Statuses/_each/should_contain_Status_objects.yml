@@ -12,7 +12,7 @@ http_interactions:
       Accept:
       - application/vnd.gathercontent.v0.5+json
       Authorization:
-       - Basic YW5kcmV3QGdhdGhlcmNvbnRlbnQuY29tOjJkMmE4YmY2LTA4YzAtNDllNi05NDYwLTI1MTM5ZmRiOGIyNA==
+      - Basic YW5kcmV3QGdhdGhlcmNvbnRlbnQuY29tOjJkMmE4YmY2LTA4YzAtNDllNi05NDYwLTI1MTM5ZmRiOGIyNA==
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
