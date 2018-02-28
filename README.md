@@ -100,11 +100,9 @@ projects.each do |project|
 end
 ```
 
-## Project
+### Project
 
 Retrieves all information for a specific Project.
-
-require 'gather_content'
 
 ```ruby
 require 'gather_content'
@@ -119,7 +117,7 @@ project["name"]
 => "Example Project"
 ```
 
-## Creating a Project
+### Creating a Project
 
 Creates a new Project for a specific Account. When you create a Project, a default Workflow containing four Statuses will be created and associated with it. As part of this request a type can be passed as an argument to specify the project type.
 
@@ -149,4 +147,37 @@ begin
 rescue GatherContent::Error::RequestError => e
   puts e.message
 end
+```
+
+### Statuses
+
+Retrieves a list of all the Statuses (what we call the Project’s Workflow) associated with a given Project. This includes their names, descriptions, associated colours and their Due Dates.
+
+```ruby
+require 'gather_content'
+
+project_id = 123456
+statuses = GatherContent::Api::Statuses.new(project_id)
+
+statuses.each do |status|
+  puts status["id"]
+  puts status["name"]
+end
+```
+
+### Status
+
+Retrieves a list of all the Statuses (what we call the Project’s Workflow) associated with a given Project. This includes their names, descriptions, associated colours and their Due Dates.
+
+```ruby
+require 'gather_content'
+
+status_id = 123456
+status = GatherContent::Api::Status.new(status_id)
+
+status_id["id"]
+=> 123456
+
+status_id["name"]
+=> "Draft"
 ```
