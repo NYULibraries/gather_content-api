@@ -28,19 +28,7 @@ module GatherContent
           item_id = result.headers['location'].split('/').last
           GatherContent::Api::Item.new(item_id)
         else
-          parsed = JSON.parse(result.body)
-
-          if parsed.is_a?(Hash) && parsed['data']
-            if parsed['data'].is_a?(Hash) && parsed['data']['message']
-              raise GatherContent::Error::RequestError.new(parsed['data']['message'], result.status)
-            elsif parsed['data'].is_a?(Array)
-              raise GatherContent::Error::RequestError.new(parsed['data'].join(''), result.status)
-            else
-              raise GatherContent::Error::RequestError.new(parsed['data'], result.status)
-            end
-          else
-            raise GatherContent::Error::RequestError.new(result.body, result.status)
-          end
+          raise GatherContent::Error::RequestError.new(result)
         end
       end
 

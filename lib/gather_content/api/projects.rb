@@ -27,13 +27,7 @@ module GatherContent
           project_id = result.headers['location'].split('/').last
           GatherContent::Api::Project.new(project_id)
         else
-          parsed = JSON.parse(result.body)
-
-          if parsed.is_a?(Hash) && parsed['data'] && parsed['data']['message']
-            raise GatherContent::Error::RequestError.new(parsed['data']['message'], result.status)
-          else
-            raise GatherContent::Error::RequestError.new(result.body, result.status)
-          end
+          raise GatherContent::Error::RequestError.new(result)
         end
       end
 
