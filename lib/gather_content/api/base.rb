@@ -17,8 +17,15 @@ module GatherContent
       def post(data = {}, path_override = nil)
         connection.post do |request|
           request.url(path_override || path)
-          request.params = data
+          request.body = data
           request.headers['Accept'] = "application/vnd.gathercontent.v0.5+json"
+          yield request if block_given?
+        end
+      end
+
+      def post_json(data = {}, path_override = nil)
+        post(data.to_json, path_override) do |request|
+          request.headers['Content-type'] = "application/json"
         end
       end
 

@@ -21,7 +21,7 @@ module GatherContent
         raise ArgumentError, "name is required!" if data["name"].nil? || data["name"].empty?
         raise ArgumentError, "type is invalid!" unless valid_type?(data["type"])
 
-        result = post(data.merge({ 'account_id' => @account_id }))
+        result = post_json(data.merge({ 'account_id' => @account_id }))
 
         if result.status == 202
           project_id = result.headers['location'].split('/').last

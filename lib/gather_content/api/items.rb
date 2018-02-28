@@ -22,7 +22,7 @@ module GatherContent
 
         raise ArgumentError, "name is required!" if data["name"].nil? || data["name"].empty?
 
-        result = post(data.merge({ 'project_id' => @project_id }))
+        result = post_json(data.merge({ 'project_id' => @project_id }))
 
         if result.status == 202
           item_id = result.headers['location'].split('/').last

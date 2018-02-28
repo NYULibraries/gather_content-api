@@ -1,3 +1,5 @@
+require "base64"
+
 module GatherContent
   module Api
     class Item < Base
@@ -14,28 +16,32 @@ module GatherContent
       end
 
       def save(config)
-
+        encoded = Base64.strict_encode64(config.to_json)
+        result = post_json({config: encoded}, "#{path}/save")
+        if result.status == 202
+          true
+        else
+          raise GatherContent::Error::RequestError.new(result)
+        end
       end
 
       def apply_template(template_id)
-        result = post({ "template_id" => template_id }, "#{path}/apply_template")
-        if result.status == 202
-          true
-        else
-          raise GatherContent::Error::RequestError.new(result)
-        end
+        post_save({ "template_id" => template_id }, "#{path}/apply_template")
       end
 
       def choose_status(status_id)
-        result = post({ "status_id" => status_id }, "#{path}/choose_status")
+        post_save({ "status_id" => status_id }, "#{path}/choose_status")
+      end
+
+    private
+      def post_save(params, path)
+        result = post_json(params, path)
         if result.status == 202
           true
         else
           raise GatherContent::Error::RequestError.new(result)
         end
       end
-
-    private
 
       def path
         @path ||= "/items/#{item_id}"

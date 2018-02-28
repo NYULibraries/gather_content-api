@@ -2,19 +2,19 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.gathercontent.com/projects?account_id=123456&name=Test%20Project&type=website-build
+    uri: https://api.gathercontent.com/items/123456/save
     body:
       encoding: UTF-8
-      string: ''
+      string: '{"config":"W3sibGFiZWwiOiJDb250ZW50IiwibmFtZSI6InRhYjEiLCJoaWRkZW4iOmZhbHNlLCJlbGVtZW50cyI6W3sidHlwZSI6InRleHQiLCJuYW1lIjoiZWwxIiwicmVxdWlyZWQiOmZhbHNlLCJsYWJlbCI6IkJsb2cgcG9zdCIsInZhbHVlIjoiSGVsbG8gd29ybGQiLCJtaWNyb2NvcHkiOiIiLCJsaW1pdF90eXBlIjoid29yZHMiLCJsaW1pdCI6MTAwMCwicGxhaW5fdGV4dCI6ZmFsc2V9XX1d"}'
     headers:
       User-Agent:
       - Faraday v0.14.0
       Accept:
       - application/vnd.gathercontent.v0.5+json
+      Content-Type:
+      - application/json
       Authorization:
       - Basic YW5kcmV3QGdhdGhlcmNvbnRlbnQuY29tOjJkMmE4YmY2LTA4YzAtNDllNi05NDYwLTI1MTM5ZmRiOGIyNA==
-      Content-Length:
-      - '0'
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -27,9 +27,7 @@ http_interactions:
       Content-Type:
       - text/html; charset=UTF-8
       Date:
-      - Tue, 27 Feb 2018 23:39:08 GMT
-      Location:
-      - http://api.gathercontent.com/projects/161823
+      - Wed, 28 Feb 2018 06:41:43 GMT
       Server:
       - nginx
       Content-Length:
@@ -40,5 +38,5 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version:
-  recorded_at: Tue, 27 Feb 2018 23:39:09 GMT
+  recorded_at: Wed, 28 Feb 2018 06:41:43 GMT
 recorded_with: VCR 3.0.3

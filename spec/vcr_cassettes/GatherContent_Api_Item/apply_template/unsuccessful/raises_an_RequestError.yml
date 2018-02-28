@@ -2,19 +2,19 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.gathercontent.com/items/123456/apply_template?template_id=567890
+    uri: https://api.gathercontent.com/items/123456/apply_template
     body:
       encoding: UTF-8
-      string: ''
+      string: '{"template_id":1085779}'
     headers:
       User-Agent:
       - Faraday v0.14.0
+      Content-Type:
+      - application/json
       Accept:
       - application/vnd.gathercontent.v0.5+json
       Authorization:
       - Basic YW5kcmV3QGdhdGhlcmNvbnRlbnQuY29tOjJkMmE4YmY2LTA4YzAtNDllNi05NDYwLTI1MTM5ZmRiOGIyNA==
-      Content-Length:
-      - '0'
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
   response:
@@ -27,7 +27,7 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Wed, 28 Feb 2018 05:32:02 GMT
+      - Wed, 28 Feb 2018 06:28:13 GMT
       Server:
       - nginx
       Content-Length:
@@ -38,5 +38,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"error":"unknown error"}'
     http_version:
-  recorded_at: Wed, 28 Feb 2018 05:32:02 GMT
+  recorded_at: Wed, 28 Feb 2018 06:28:13 GMT
 recorded_with: VCR 3.0.3

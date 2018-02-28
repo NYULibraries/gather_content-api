@@ -48,7 +48,7 @@ describe GatherContent::Api::Items, vcr: true do
       end
 
       it "set the item id" do
-        expect(subject.item_id).to eq("6498974")
+        expect(subject.item_id).to eq("6499285")
       end
     end
 
