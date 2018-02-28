@@ -141,7 +141,7 @@ require 'gather_content'
 account_id = 123456
 
 begin
-  p = GatherContent::Api::Project.new(account_id)
+  p = GatherContent::Api::Projects.new(account_id)
   # Name is required. Type defaults to "other"
   project = p.create{ name: "Project Name", type: "website-build" })
 
@@ -219,11 +219,130 @@ item["name"]
 
 ### Create an item
 
+Creates a new Item within a particular Project.
+
+The config object (if supplied) should be a Ruby Hash representation of the [configuration](https://docs.gathercontent.com/reference#the-config-field).
+
+If successful, will return the newly created item.
+
+On failure, it will throw a GatherContent::Error::RequestError
+
+```ruby
+require 'gather_content'
+
+project_id = 123456
+
+config = [{
+  "label": "Content",
+  "name": "tab1",
+  "hidden": false,
+  "elements": [{
+      "type": "text",
+      "name": "el1",
+      "required": false,
+      "label": "Blog post",
+      "value": "Hello world",
+      "microcopy": "",
+      "limit_type": "words",
+      "limit": 1000,
+      "plain_text": false
+  }]
+}]
+
+begin
+  i = GatherContent::Api::Items.new(project_id)
+  item = i.create({
+    name: "Item Name", # Required
+    parent_id: 123456, # Optional
+    template_id: 123456, # Optional
+    config: config, # Optional
+  });
+
+  puts item["name"]
+
+rescue GatherContent::Error::RequestError => e
+  puts e.message
+end
+
 ### Save an item
+
+Saves an Item with the newly updated data. It expects a valid configuration structure, otherwise the save request will not be accepted by the API.
+
+The config object should be a Ruby Hash representation of the [configuration](https://docs.gathercontent.com/reference#the-config-field).
+
+```ruby
+require 'gather_content'
+
+item_id = 123456
+item = GatherContent::Api::Item.new(item_id)
+
+config = [{
+  "label": "Content",
+  "name": "tab1",
+  "hidden": false,
+  "elements": [{
+      "type": "text",
+      "name": "el1",
+      "required": false,
+      "label": "Blog post",
+      "value": "Hello world",
+      "microcopy": "",
+      "limit_type": "words",
+      "limit": 1000,
+      "plain_text": false
+  }]
+}]
+
+begin
+  item.save(config)
+rescue GatherContent::Error::RequestError => e
+  puts e.message
+end
+```
+
+On failure, it will throw a GatherContent::Error::RequestError
 
 ### Apply a template to an item
 
+Applies the structure of a Template to an existing Item.
+
+Beware that, just like within the application, this action will override the existing structure of an Item and may result in loss of content when fields do not match. Ensure you take necessary precautions.
+
+```ruby
+require 'gather_content'
+
+item_id = 123456
+item = GatherContent::Api::Item.new(item_id)
+
+template_id = 123456
+begin
+  item.apply_template(template_id)
+rescue GatherContent::Error::RequestError => e
+  puts e.message
+end
+```
+
+On failure, it will throw a GatherContent::Error::RequestError
+
 ### Choose Status
+
+Set the status of the item
+
+```ruby
+require 'gather_content'
+
+item_id = 123456
+item = GatherContent::Api::Item.new(item_id)
+
+status_id = 123456
+begin
+  item.choose_status(status_id)
+rescue GatherContent::Error::RequestError => e
+  puts e.message
+end
+```
+
+On failure, it will throw a GatherContent::Error::RequestError
 
 ### Files
 
