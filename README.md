@@ -83,3 +83,70 @@ account["id"]
 account["name"]
 => "Example"
 ```
+
+## Projects
+
+Retrieves a list of all Projects associated with the given Account.
+
+```ruby
+require 'gather_content'
+
+account_id = 123456
+projects = GatherContent::Api::Projects.new(account_id)
+
+projects.each do |project|
+  puts project["id"]
+  puts project["name"]
+end
+```
+
+## Project
+
+Retrieves all information for a specific Project.
+
+require 'gather_content'
+
+```ruby
+require 'gather_content'
+
+project_id = 123456
+project = GatherContent::Api::Project.new(project_id)
+
+project["id"]
+=> 123456
+
+project["name"]
+=> "Example Project"
+```
+
+## Creating a Project
+
+Creates a new Project for a specific Account. When you create a Project, a default Workflow containing four Statuses will be created and associated with it. As part of this request a type can be passed as an argument to specify the project type.
+
+Supported project types
+
+* website-build
+* ongoing-website-content
+* marketing-editorial-content
+* email-marketing-content
+* other
+
+If successful, will return the newly created project.
+
+On failure, it will throw a GatherContent::Error::RequestError
+
+```ruby
+require 'gather_content'
+
+account_id = 123456
+
+begin
+  p = GatherContent::Api::Project.new(account_id)
+  # Name is required. Type defaults to "other"
+  project = p.create{ name: "Project Name", type: "website-build" })
+
+  name = project["name"]
+rescue GatherContent::Error::RequestError => e
+  puts e.message
+end
+```
