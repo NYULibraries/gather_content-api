@@ -1,0 +1,42 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.gathercontent.com/items/123456/choose_status?item_id=123456&status_id=567890
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.14.0
+      Accept:
+      - application/vnd.gathercontent.v0.5+json
+      Authorization:
+      - Basic YW5kcmV3QGdhdGhlcmNvbnRlbnQuY29tOjJkMmE4YmY2LTA4YzAtNDllNi05NDYwLTI1MTM5ZmRiOGIyNA==
+      Content-Length:
+      - '0'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 500
+      message: Internal Server Error
+    headers:
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/json
+      Date:
+      - Wed, 28 Feb 2018 04:45:42 GMT
+      Server:
+      - nginx
+      Content-Length:
+      - '25'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: '{"error":"unknown error"}'
+    http_version:
+  recorded_at: Wed, 28 Feb 2018 04:45:42 GMT
+recorded_with: VCR 3.0.3
