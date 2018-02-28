@@ -11,5 +11,7 @@ module GatherContent
     autoload :Item, 'gather_content/api/item'
     autoload :Statuses, 'gather_content/api/statuses'
     autoload :Status, 'gather_content/api/status'
+    autoload :Files, 'gather_content/api/files'
+    autoload :File, 'gather_content/api/file'
   end
 end
