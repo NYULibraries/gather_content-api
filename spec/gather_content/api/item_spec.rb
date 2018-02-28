@@ -35,7 +35,38 @@ describe GatherContent::Api::Item, vcr: true do
   end
 
   describe "apply_template" do
-    let(:item_id) { 6498974 }
+    subject { item.apply_template(template_id) }
+
+    context "successful" do
+      let(:template_id) { 654321 }
+
+      it "returns true" do
+        expect(subject).to eq(true)
+      end
+    end
+
+    context "unsuccessful" do
+      let(:template_id) { 567890 }
+      it 'raises an RequestError' do
+        expect { subject }.to raise_error GatherContent::Error::RequestError
+      end
+
+      it 'sets the RequestError status' do
+        begin
+          subject
+        rescue GatherContent::Error::RequestError => e
+          expect(e.status).to eq(500)
+        end
+      end
+
+      it 'parses the message' do
+        begin
+          subject
+        rescue GatherContent::Error::RequestError => e
+          expect(e.message).to eq("unknown error")
+        end
+      end
+    end
 
   end
 
@@ -61,6 +92,14 @@ describe GatherContent::Api::Item, vcr: true do
           subject
         rescue GatherContent::Error::RequestError => e
           expect(e.status).to eq(500)
+        end
+      end
+
+      it 'parses the message' do
+        begin
+          subject
+        rescue GatherContent::Error::RequestError => e
+          expect(e.message).to eq("unknown error")
         end
       end
     end

@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.gathercontent.com/items/123456/choose_status?status_id=567890
+    uri: https://api.gathercontent.com/items/123456/apply_template?template_id=567890
     body:
       encoding: UTF-8
       string: ''
@@ -27,7 +27,7 @@ http_interactions:
       Content-Type:
       - application/json
       Date:
-      - Wed, 28 Feb 2018 04:45:42 GMT
+      - Wed, 28 Feb 2018 05:32:02 GMT
       Server:
       - nginx
       Content-Length:
@@ -38,5 +38,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"error":"unknown error"}'
     http_version:
-  recorded_at: Wed, 28 Feb 2018 04:45:42 GMT
+  recorded_at: Wed, 28 Feb 2018 05:32:02 GMT
 recorded_with: VCR 3.0.3

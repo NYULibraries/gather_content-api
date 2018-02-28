@@ -18,11 +18,16 @@ module GatherContent
       end
 
       def apply_template(template_id)
-
+        result = post({ "template_id" => template_id }, "#{path}/apply_template")
+        if result.status == 202
+          true
+        else
+          raise GatherContent::Error::RequestError.new(result)
+        end
       end
 
       def choose_status(status_id)
-        result = post({ "item_id" => @item_id, "status_id" => status_id }, "#{path}/choose_status")
+        result = post({ "status_id" => status_id }, "#{path}/choose_status")
         if result.status == 202
           true
         else

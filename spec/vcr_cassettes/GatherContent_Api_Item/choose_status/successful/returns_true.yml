@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.gathercontent.com/items/123456/choose_status?item_id=123456&status_id=654321
+    uri: https://api.gathercontent.com/items/123456/choose_status?status_id=654321
     body:
       encoding: UTF-8
       string: ''
