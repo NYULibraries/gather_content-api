@@ -36,4 +36,58 @@ describe GatherContent::Api::Items, vcr: true do
       expect(subject.first["parent_id"]).to eq(0)
     end
   end
+
+  describe "#create" do
+    let(:name) { "Test Item" }
+
+    subject { items.create({'name' => name}) }
+
+    context 'with name' do
+      it "created an item" do
+        expect(subject).to be_a GatherContent::Api::Item
+      end
+
+      it "set the item id" do
+        expect(subject.item_id).to eq("6498974")
+      end
+    end
+
+    context 'with no name' do
+      let(:name) { nil }
+
+      it 'should raise an ArgumentError' do
+        expect { subject }.to raise_error ArgumentError
+      end
+    end
+
+    context 'with empty name' do
+      let(:name) { "" }
+
+      it 'should raise an ArgumentError' do
+        expect { subject }.to raise_error ArgumentError
+      end
+    end
+
+    context 'on non-202 response' do
+      it 'raises an RequestError' do
+        expect { subject }.to raise_error GatherContent::Error::RequestError
+      end
+
+      it 'sets the RequestError message' do
+        begin
+          subject
+        rescue GatherContent::Error::RequestError => e
+          expect(e.message).to eq("")
+        end
+      end
+
+      it 'sets the RequestError status' do
+        begin
+          subject
+        rescue GatherContent::Error::RequestError => e
+          expect(e.status).to eq(200)
+        end
+      end
+    end
+  end
 end

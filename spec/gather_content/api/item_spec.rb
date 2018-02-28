@@ -33,4 +33,12 @@ describe GatherContent::Api::Item, vcr: true do
       expect(subject["parent_id"]).to eq(0)
     end
   end
+
+  describe "apply_template" do
+
+  end
+
+  describe "choose_status" do
+
+  end
 end

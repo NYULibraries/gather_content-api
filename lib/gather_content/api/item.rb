@@ -13,6 +13,18 @@ module GatherContent
         fetch[key]
       end
 
+      def save(config)
+
+      end
+
+      def apply_template(template_id)
+
+      end
+
+      def choose_status(status_id)
+
+      end
+
     private
 
       def path
