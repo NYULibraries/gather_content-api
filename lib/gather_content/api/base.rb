@@ -6,10 +6,18 @@ module GatherContent
         raise RuntimeError, "Cannot initialize this interface!"
       end
 
-      def get
+      def get(path_override = nil)
         connection.get do |request|
-          request.url path
+          request.url(path_override || path)
           request.params = params unless params.nil?
+          request.headers['Accept'] = "application/vnd.gathercontent.v0.5+json"
+        end
+      end
+
+      def post(data = {}, path_override = nil)
+        connection.post do |request|
+          request.url(path_override || path)
+          request.params = data
           request.headers['Accept'] = "application/vnd.gathercontent.v0.5+json"
         end
       end
