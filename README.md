@@ -39,7 +39,7 @@ ruby script_that_uses_the_gem.rb
 
 ## Me
 
-You have access to all fields of information about the logged in User such as their avatar url, name, and other fields.
+You have access to all fields of information about the logged in User such as their avatar url, name, and other fields. [Sample Response](https://docs.gathercontent.com/reference#get-me)
 
 
 ```ruby
@@ -55,7 +55,7 @@ me["first_name"]
 
 ## Accounts
 
-Retrieves a list of all Accounts associated with the authenticated user
+Retrieves a list of all Accounts associated with the authenticated user. [Sample Response](https://docs.gathercontent.com/reference#get-accounts)
 
 ```ruby
 require 'gather_content'
@@ -69,7 +69,7 @@ end
 
 ## Account
 
-Retrieve a specific account
+Retrieve a specific account. [Sample Response](https://docs.gathercontent.com/reference#get-accountsaccount_id)
 
 ```ruby
 require 'gather_content'
@@ -86,7 +86,7 @@ account["name"]
 
 ## Projects
 
-Retrieves a list of all Projects associated with the given Account.
+Retrieves a list of all Projects associated with the given Account. [Sample Response](https://docs.gathercontent.com/reference#get-projects)
 
 ```ruby
 require 'gather_content'
@@ -102,7 +102,7 @@ end
 
 ### Project
 
-Retrieves all information for a specific Project.
+Retrieves all information for a specific Project. [Sample Response](https://docs.gathercontent.com/reference#get-project-by-id)
 
 ```ruby
 require 'gather_content'
@@ -133,6 +133,8 @@ If successful, will return the newly created project.
 
 On failure, it will throw a GatherContent::Error::RequestError
 
+[Sample Response](https://docs.gathercontent.com/reference#post-projects)
+
 ```ruby
 require 'gather_content'
 
@@ -151,7 +153,7 @@ end
 
 ### Statuses
 
-Retrieves a list of all the Statuses (what we call the Project’s Workflow) associated with a given Project. This includes their names, descriptions, associated colours and their Due Dates.
+Retrieves a list of all the Statuses (what we call the Project’s Workflow) associated with a given Project. This includes their names, descriptions, associated colours and their Due Dates. [Sample Response](https://docs.gathercontent.com/reference#get-project-statuses)
 
 ```ruby
 require 'gather_content'
@@ -167,7 +169,7 @@ end
 
 ### Status
 
-Retrieves a list of all the Statuses (what we call the Project’s Workflow) associated with a given Project. This includes their names, descriptions, associated colours and their Due Dates.
+Retrieves a list of all the Statuses (what we call the Project’s Workflow) associated with a given Project. This includes their names, descriptions, associated colours and their Due Dates. [Sample Response](https://docs.gathercontent.com/reference#get-project-statuses-by-id)
 
 ```ruby
 require 'gather_content'
@@ -182,9 +184,66 @@ status["name"]
 => "Draft"
 ```
 
+## Items
+
+Get a list of all Items that exist on a particular Project.
+
+```ruby
+require 'gather_content'
+
+project_id = 123456
+items = GatherContent::Api::Items.new(project_id)
+
+items.each do |item|
+  puts item["id"]
+  puts item["name"]
+end
+```
+
+### Item
+
+Get all data related to a particular Item within a Project. You can access all of its properties, including the content which will be separated by the different fields it contains.
+
+```ruby
+require 'gather_content'
+
+item_id = 123456
+item = GatherContent::Api::Item.new(item_id)
+
+item["id"]
+=> 123456
+
+item["name"]
+=> "Home"
+```
+
+### Create an item
+
+### Save an item
+
+### Apply a template to an item
+
+### Choose Status
+
+### Files
+
+Get a list of all files related to a particular Item. [Sample Response](https://docs.gathercontent.com/reference#get-item-files)
+
+```ruby
+require 'gather_content'
+
+item_id = 123456
+files = GatherContent::Api::Files.new(item_id)
+
+files.each do |file|
+  puts file["id"]
+  puts file["filename"]
+end
+```
+
 ## Templates
 
-Retrieves a list of all Templates associated with the given Project.
+Retrieves a list of all Templates associated with the given Project. [Sample Response](https://docs.gathercontent.com/reference#get-templates)
 
 ```ruby
 require 'gather_content'
@@ -200,7 +259,7 @@ end
 
 ### Template
 
-This retrieves all data related with a specific Template.
+This retrieves all data related with a specific Template. [Sample Response](https://docs.gathercontent.com/reference#get-template-by-id)
 
 ```ruby
 require 'gather_content'
