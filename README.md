@@ -263,6 +263,7 @@ begin
 rescue GatherContent::Error::RequestError => e
   puts e.message
 end
+```
 
 ### Save an item
 
