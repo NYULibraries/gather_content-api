@@ -175,9 +175,42 @@ require 'gather_content'
 status_id = 123456
 status = GatherContent::Api::Status.new(status_id)
 
-status_id["id"]
+status["id"]
 => 123456
 
-status_id["name"]
+status["name"]
 => "Draft"
+```
+
+## Templates
+
+Retrieves a list of all Templates associated with the given Project.
+
+```ruby
+require 'gather_content'
+
+project_id = 123456
+templates = GatherContent::Api::Templates.new(project_id)
+
+templates.each do |template|
+  puts template["id"]
+  puts template["name"]
+end
+```
+
+### Template
+
+This retrieves all data related with a specific Template.
+
+```ruby
+require 'gather_content'
+
+template_id = 123456
+template = GatherContent::Api::Status.new(template_id)
+
+template["id"]
+=> 123456
+
+template["name"]
+=> "Blog theme"
 ```
