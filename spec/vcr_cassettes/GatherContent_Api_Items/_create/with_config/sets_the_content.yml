@@ -1,0 +1,88 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.gathercontent.com/items
+    body:
+      encoding: UTF-8
+      string: '{"name":"Test Item","config":"W3sibGFiZWwiOiJDb250ZW50IiwibmFtZSI6InRhYjEiLCJoaWRkZW4iOmZhbHNlLCJlbGVtZW50cyI6W3sidHlwZSI6InRleHQiLCJuYW1lIjoiZWwxIiwicmVxdWlyZWQiOmZhbHNlLCJsYWJlbCI6IkJsb2cgcG9zdCIsInZhbHVlIjoiSGVsbG8gd29ybGQiLCJtaWNyb2NvcHkiOiIiLCJsaW1pdF90eXBlIjoid29yZHMiLCJsaW1pdCI6MTAwMCwicGxhaW5fdGV4dCI6ZmFsc2V9XX1d","project_id":"123456"}'
+    headers:
+      User-Agent:
+      - Faraday v0.14.0
+      Accept:
+      - application/vnd.gathercontent.v0.5+json
+      Content-Type:
+      - application/json
+      Authorization:
+      - Basic YW5kcmV3QGdhdGhlcmNvbnRlbnQuY29tOjJkMmE4YmY2LTA4YzAtNDllNi05NDYwLTI1MTM5ZmRiOGIyNA==
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 202
+      message: Accepted
+    headers:
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - text/html; charset=UTF-8
+      Date:
+      - Mon, 05 Mar 2018 02:03:49 GMT
+      Location:
+      - http://api.gathercontent.com/items/6499285
+      Server:
+      - nginx
+      Content-Length:
+      - '0'
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version:
+  recorded_at: Mon, 05 Mar 2018 02:03:49 GMT
+- request:
+    method: get
+    uri: https://api.gathercontent.com/items/6499285
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.14.0
+      Accept:
+      - application/vnd.gathercontent.v0.5+json
+      Authorization:
+      - Basic YW5kcmV3QGdhdGhlcmNvbnRlbnQuY29tOjJkMmE4YmY2LTA4YzAtNDllNi05NDYwLTI1MTM5ZmRiOGIyNA==
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache
+      Content-Type:
+      - application/json
+      Date:
+      - Mon, 05 Mar 2018 02:05:06 GMT
+      Server:
+      - nginx
+      Content-Length:
+      - '528'
+      Connection:
+      - keep-alive
+    body:
+      encoding: ASCII-8BIT
+      string: '{"data":{"id":6499285,"project_id":161856,"parent_id":0,"template_id":1085780,"custom_state_id":991221,"position":"2","name":"Test
+        Item","config":[{"label":"Content","name":"tab1","hidden":false,"elements":[{"type":"text","name":"el1","required":false,"label":"Blog
+        post","value":"Hello world","microcopy":"","limit_type":"words","limit":1000,"plain_text":false}]}],"notes":"","type":"item","overdue":false,"archived_by":null,"archived_at":null,"created_at":{"date":"2018-02-28
+        06:10:55","timezone_type":3,"timezone":"UTC"},"updated_at":{"date":"2018-02-28
+        06:40:07","timezone_type":3,"timezone":"UTC"},"status":{"data":{"id":"991221","is_default":false,"position":"2","color":"#ffb0ff","name":"Drafting","description":"Creating
+        the initial draft of the content for this item. This may be a quick start,
+        proto-content, or content imported from the old site. Be sure to follow the
+        style guide.","can_edit":true}},"due_dates":{"data":[]}}}'
+    http_version:
+  recorded_at: Mon, 05 Mar 2018 02:05:06 GMT
+recorded_with: VCR 3.0.3

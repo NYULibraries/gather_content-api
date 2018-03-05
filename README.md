@@ -143,7 +143,7 @@ account_id = 123456
 begin
   p = GatherContent::Api::Projects.new(account_id)
   # Name is required. Type defaults to "other"
-  project = p.create{ name: "Project Name", type: "website-build" })
+  project = p.create{ "name" => "Project Name", "type" => "website-build" })
 
   name = project["name"]
 rescue GatherContent::Error::RequestError => e
@@ -252,10 +252,10 @@ config = [{
 begin
   i = GatherContent::Api::Items.new(project_id)
   item = i.create({
-    name: "Item Name", # Required
-    parent_id: 123456, # Optional
-    template_id: 123456, # Optional
-    config: config, # Optional
+    "name" => "Item Name", # Required
+    "parent_id" => 123456, # Optional
+    "template_id" => 123456, # Optional
+    "config" => config, # Optional
   });
 
   puts item["name"]

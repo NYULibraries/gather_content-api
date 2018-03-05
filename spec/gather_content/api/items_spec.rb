@@ -39,8 +39,9 @@ describe GatherContent::Api::Items, vcr: true do
 
   describe "#create" do
     let(:name) { "Test Item" }
+    let(:config) { nil }
 
-    subject { items.create({'name' => name}) }
+    subject { items.create({'name' => name, 'config' => config}) }
 
     context 'with name' do
       it "created an item" do
@@ -65,6 +66,39 @@ describe GatherContent::Api::Items, vcr: true do
 
       it 'should raise an ArgumentError' do
         expect { subject }.to raise_error ArgumentError
+      end
+    end
+
+    context 'with config' do
+      let(:config) do
+        [{
+          "label": "Content",
+          "name": "tab1",
+          "hidden": false,
+          "elements": [{
+              "type": "text",
+              "name": "el1",
+              "required": false,
+              "label": "Blog post",
+              "value": "Hello world",
+              "microcopy": "",
+              "limit_type": "words",
+              "limit": 1000,
+              "plain_text": false
+          }]
+        }]
+      end
+
+      it "created an item" do
+        expect(subject).to be_a GatherContent::Api::Item
+      end
+
+      it "set the item id" do
+        expect(subject.item_id).to eq("6499285")
+      end
+
+      it "sets the content" do
+        expect(subject["config"]).to_not be_nil
       end
     end
 

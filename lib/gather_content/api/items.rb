@@ -1,3 +1,5 @@
+require "base64"
+
 module GatherContent
   module Api
     class Items < Base
@@ -18,7 +20,9 @@ module GatherContent
       def create(data)
         data.delete("parent_id") if data["parent_id"].nil? || data["parent_id"].empty?
         data.delete("template_id") if data["template_id"].nil? || data["template_id"].empty?
-        data.delete("config") if data["config"].nil? || data["config"].empty?
+
+        config = data.delete("config")
+        data["config"] = Base64.strict_encode64(config.to_json) unless config.nil? || config.empty?
 
         raise ArgumentError, "name is required!" if data["name"].nil? || data["name"].empty?
 
