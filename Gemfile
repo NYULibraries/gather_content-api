@@ -9,4 +9,5 @@ group :development do
 
   gem 'pry'
   gem 'figs', require: false
+  gem 'climate_control', require: false
 end

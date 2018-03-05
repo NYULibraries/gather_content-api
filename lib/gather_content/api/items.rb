@@ -1,3 +1,5 @@
+require "base64"
+
 module GatherContent
   module Api
     class Items < Base
@@ -9,26 +11,32 @@ module GatherContent
         @project_id = project_id
       end
 
-      def to_a(items = [])
-        JSON.parse(get.body)['data'].each do |item|
-          new_item = item_class.new(item['id'])
-          items << new_item
-        end
-        return items
-      end
-
       def each(&block)
-        self.to_a.each(&block)
+        fetch.each do |item|
+          yield GatherContent::Api::Item.new(item['id'], item)
+        end
       end
 
-    protected
+      def create(data)
+        data.delete("parent_id") if data["parent_id"].nil? || data["parent_id"].empty?
+        data.delete("template_id") if data["template_id"].nil? || data["template_id"].empty?
 
-      def item_class
-        @item_class ||= Kernel.const_get("GatherContent::Api::Item")
+        config = data.delete("config")
+        data["config"] = Base64.strict_encode64(config.to_json) unless config.nil? || config.empty?
+
+        raise ArgumentError, "name is required!" if data["name"].nil? || data["name"].empty?
+
+        result = post_json(data.merge({ 'project_id' => @project_id }))
+
+        if result.status == 202
+          item_id = result.headers['location'].split('/').last
+          GatherContent::Api::Item.new(item_id)
+        else
+          raise GatherContent::Error::RequestError.new(result)
+        end
       end
 
     private
-
       def params
         { project_id: project_id }
       end
