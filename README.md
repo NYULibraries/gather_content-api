@@ -221,7 +221,8 @@ item["name"]
 
 Creates a new Item within a particular Project.
 
-The config object (if supplied) should be a Ruby Hash representation of the [configuration](https://docs.gathercontent.com/reference#the-config-field).
+Use the handy [DSL](#config-dsl) to generate a [config field](https://docs.gathercontent.com/reference#the-config-field).
+
 
 If successful, will return the newly created item.
 
@@ -232,22 +233,22 @@ require 'gather_content'
 
 project_id = 123456
 
-config = [{
-  "label": "Content",
-  "name": "tab1",
-  "hidden": false,
-  "elements": [{
-      "type": "text",
-      "name": "el1",
-      "required": false,
-      "label": "Blog post",
-      "value": "Hello world",
-      "microcopy": "",
-      "limit_type": "words",
-      "limit": 1000,
-      "plain_text": false
-  }]
-}]
+config = GatherContent::Config::Builder.build do
+  label "Content"
+  name "tab1"
+  hidden false
+
+  text do
+    name "el1"
+    required false
+    label "Blog post"
+    value "Hello world"
+    microcopy ""
+    limit_type :words
+    limit 1000
+    plain_text false
+  end
+end
 
 begin
   i = GatherContent::Api::Items.new(project_id)
@@ -269,7 +270,7 @@ end
 
 Saves an Item with the newly updated data. It expects a valid configuration structure, otherwise the save request will not be accepted by the API.
 
-The config object should be a Ruby Hash representation of the [configuration](https://docs.gathercontent.com/reference#the-config-field).
+Use the handy [DSL](#config-dsl) to generate a [config field](https://docs.gathercontent.com/reference#the-config-field).
 
 ```ruby
 require 'gather_content'
@@ -277,22 +278,22 @@ require 'gather_content'
 item_id = 123456
 item = GatherContent::Api::Item.new(item_id)
 
-config = [{
-  "label": "Content",
-  "name": "tab1",
-  "hidden": false,
-  "elements": [{
-      "type": "text",
-      "name": "el1",
-      "required": false,
-      "label": "Blog post",
-      "value": "Hello world",
-      "microcopy": "",
-      "limit_type": "words",
-      "limit": 1000,
-      "plain_text": false
-  }]
-}]
+config = GatherContent::Config::Builder.build do
+  label "Content"
+  name "tab1"
+  hidden false
+
+  text do
+    name "el1"
+    required false
+    label "Blog post"
+    value "Hello world"
+    microcopy ""
+    limit_type :words
+    limit 1000
+    plain_text false
+  end
+end
 
 begin
   item.save(config)
