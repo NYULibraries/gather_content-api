@@ -393,3 +393,154 @@ template["id"]
 template["name"]
 => "Blog theme"
 ```
+
+## Config DSL
+
+This gem also includes a handy DSL to make creating configurations simple.
+
+### Getting started
+
+Every configuration object starts with some tabs (You can define as many as you like)
+
+```ruby
+config = GatherContent::Config::Builder.build do
+  tab do
+    name "website"                        # Required. Must be unique.
+    label "Website"                       # Required
+    hidden false
+  end
+
+  tab do
+    name "email"
+    label "Email"
+    hidden: false
+  end
+end
+```
+
+### Tabs
+
+Tabs can have sections, text, files, radio buttons and checkboxes
+
+```ruby
+config = GatherContent::Config::Builder.build do
+  tab do
+    name "website"
+    label "Website"
+    hidden false
+
+    section do
+      name "main"                       # Required. Must be unique.
+      label "Main Copy"                 # Required
+      subtitle ""
+    end
+
+    text do
+      name "title"                      # Required. Must be unique.
+      label "Title"                     # Required
+      required true
+      value ""
+      microcopy "The title of the page"
+      limit_type :words                 # Can be :words or :chars
+      limit 100                         # Must be positive
+      plain_text false
+    end
+
+    files do
+      name: "images"                    # Required. Must be unique.
+      label "Images"                    # Required
+      required false
+      microcopy "Upload any images referenced in the post"
+    end
+
+    choice_radio do
+      name "post_type"
+      label "Post type"
+      required true
+      microcopy "What type of post is this?"
+      option do
+        name "regular"
+        label "Regular page"
+        selected true
+      end
+      option do
+        name "blog"
+        label "Blog Post"
+        selected false
+      end
+    end
+
+    choice_checkbox do
+      name "notify"
+      label "Notify on publish"
+      required true
+      microcopy "Who needs to be notified when this post is published?"
+
+      # This DSL is just regular Ruby, so you can do things like...
+      [ 'joe@example.com', 'kathy@example.com', 'sam@example.com' ].each_with_index do |email, index|
+        option do
+          name "email_#{index}"
+          label email
+          selected false
+        end
+      end
+    end
+  end
+end
+```
+
+### Radio choices with an "other" option
+
+If you set option_other to true, the last option needs to have a value if you set it to true.
+
+```ruby
+choice_radio do
+  name "post_type"
+  label "Post type"
+  required false
+  microcopy "What type of post is this?"
+  option do
+    name "regular"
+    label "Regular page"
+    selected false  # Only one radio option can be selected at a time.
+  end
+  option do
+    name "blog"
+    label "Blog Post"
+    selected false
+  end
+  option do
+    name "other"
+    label "Other"
+    selected true
+    value "Push notification"   # If the last option is selected, you need to supply a value.
+  end
+end
+```
+
+To use the config object:
+
+```ruby
+config = GatherContent::Config::Builder.build do
+  tab do
+    name "website"                        # Required. Must be unique.
+    label "Website"                       # Required
+    hidden false
+  end
+
+  tab do
+    name "email"
+    label "Email"
+    hidden: false
+  end
+end
+
+account = GatherContent::Api::Accounts.new.first
+project = GatherContent::Api::Projects.new(account["id"]).create({
+  "name" => "My Project"
+})
+website = GatherContent::Api::Items.new(project["id"]).create({
+  "name" => "Website"
+})
+website.save(config)
+```
