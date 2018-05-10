@@ -518,30 +518,3 @@ choice_radio do
   end
 end
 ```
-
-To use the config object:
-
-```ruby
-config = GatherContent::Config::Builder.build do
-  tab do
-    name "website"                        # Required. Must be unique.
-    label "Website"                       # Required
-    hidden false
-  end
-
-  tab do
-    name "email"
-    label "Email"
-    hidden: false
-  end
-end
-
-account = GatherContent::Api::Accounts.new.first
-project = GatherContent::Api::Projects.new(account["id"]).create({
-  "name" => "My Project"
-})
-website = GatherContent::Api::Items.new(project["id"]).create({
-  "name" => "Website"
-})
-website.save(config)
-```
