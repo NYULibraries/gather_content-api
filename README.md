@@ -492,7 +492,9 @@ end
 
 ### Radio choices with an "other" option
 
-Use other_option to define a user definable "other" option. If the option is selected, you need to supply a value
+Use other_option to define a user definable "other" option. This block MUST be the last one in the set.
+
+If the option is selected, you need to supply a value.
 
 ```ruby
 choice_radio do
