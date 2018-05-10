@@ -500,7 +500,6 @@ choice_radio do
   label "Post type"
   required false
   microcopy "What type of post is this?"
-  option_other true
   option do
     name "regular"
     label "Regular page"
