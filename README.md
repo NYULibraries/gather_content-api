@@ -492,7 +492,7 @@ end
 
 ### Radio choices with an "other" option
 
-If you set option_other to true, the last option needs to have a value if you set it to true.
+Use other_option to define a user definable "other" option. If the option is selected, you need to supply a value
 
 ```ruby
 choice_radio do
@@ -500,6 +500,7 @@ choice_radio do
   label "Post type"
   required false
   microcopy "What type of post is this?"
+  option_other true
   option do
     name "regular"
     label "Regular page"
@@ -510,11 +511,11 @@ choice_radio do
     label "Blog Post"
     selected false
   end
-  option do
+  other_option do
     name "other"
     label "Other"
     selected true
-    value "Push notification"   # If the last option is selected, you need to supply a value.
+    value "Push notification"   # If this option is selected, you need to supply a value.
   end
 end
 ```
