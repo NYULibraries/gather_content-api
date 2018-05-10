@@ -18,18 +18,12 @@ module GatherContent
           raise ArgumentError, "You need to supply at least one option" if options.size == 0
 
           if other_option
-            cleaned = options.select{ |opt| opt.is_a?(GatherContent::Config::Element::Option) }
-            last = cleaned.pop
-
-            raise ArgumentError, "Options can only be GatherContent::Config::Element::Option" if cleaned.size == 0
-            raise ArgumentError, "The last option must be a GatherContent::Config::Element::OptionOther" unless last.instance_of?(GatherContent::Config::Element::OtherOption)
+            verify_other_option_types!(options)
           else
-            cleaned = options.select{ |opt| opt.instance_of?(GatherContent::Config::Element::Option) }
-            raise ArgumentError, "Options can only be GatherContent::Config::Element::Option" if cleaned.size == 0
+            verify_option_types!(options)
           end
 
-          selected = options.select{ |opt| opt.selected }
-          raise ArgumentError, "You can't select more than one ChoiceRadio Option" if selected.size > 1
+          verify_options!(options)
 
           super.merge({
             type: 'choice_radio',
@@ -40,6 +34,27 @@ module GatherContent
 
         def to_json(options = nil)
           serialize.to_json(options)
+        end
+
+
+      private
+        def verify_other_option_types!(options)
+          cleaned = options.select{ |opt| opt.is_a?(GatherContent::Config::Element::Option) }
+          last = cleaned.pop
+
+          raise ArgumentError, "Options can only be GatherContent::Config::Element::Option" if cleaned.size == 0
+          raise ArgumentError, "The last option must be a GatherContent::Config::Element::OptionOther" unless last.instance_of?(GatherContent::Config::Element::OtherOption)
+        end
+
+        def verify_option_types!(options)
+          cleaned = options.select{ |opt| opt.instance_of?(GatherContent::Config::Element::Option) }
+
+          raise ArgumentError, "Options can only be GatherContent::Config::Element::Option" if cleaned.size == 0
+        end
+
+        def verify_options!(options)
+          selected = options.select{ |opt| opt.selected }
+          raise ArgumentError, "You can't select more than one ChoiceRadio Option" if selected.size > 1
         end
       end
     end
