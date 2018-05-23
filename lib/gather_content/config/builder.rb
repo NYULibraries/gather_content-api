@@ -6,7 +6,7 @@ module GatherContent
       attr_accessor :tabs
 
       def initialize
-        self.tabs = []
+        self.tabs = GatherContent::Config::Tabs.new
       end
 
       def self.build(&block)

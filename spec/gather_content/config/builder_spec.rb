@@ -22,10 +22,21 @@ RSpec.describe GatherContent::Config::Builder do
         tab do
           label "text_label"
           name "Text Label"
+
+          text do
+            name "Text"
+            label "text"
+            required false
+            value ""
+            microcopy ""
+            limit_type :chars
+            limit 255
+            plain_text true
+          end
         end
       end
 
-      expect(builder.to_json).to eq([{"label": "text_label", "name": "Text Label", "hidden": false, "elements": []}].to_json)
+      expect(JSON.parse(builder.to_json)).to eq(JSON.parse([{"label": "text_label", "name": "Text Label", "hidden": false, "elements": [{"name": "Text", "required": false, "label": "text", "microcopy": "", "type": "text", "value": "", "limit_type": "chars", "limit": 255, "plain_text": true}]}].to_json))
     end
   end
 end
