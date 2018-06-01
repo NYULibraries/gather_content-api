@@ -19,7 +19,7 @@ Gem::Specification.new do |gem|
   gem.licenses      = ['MIT']
 
   gem.required_ruby_version = '>= 1.9.3'
-  gem.add_dependency 'rake', '~> 10'
+  gem.add_development_dependency 'rake', '~> 10'
   gem.add_dependency 'rest-client', '~> 2'
   gem.add_dependency 'faraday', '~> 0'
 end
